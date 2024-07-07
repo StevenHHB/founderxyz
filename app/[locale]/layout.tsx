@@ -42,6 +42,7 @@ export default function RootLayout({
         </NextIntlClientProvider>
         <SeoScript />
         <GoogleAdScript />
+        <Analytics />
       </body>
     </html>
   );
