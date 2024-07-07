@@ -46,7 +46,7 @@ export default async function Page({ params }: { params: { search?: string } }) 
           <TagList
             data={categoryList!.map((item) => ({
               id: String(item.id),
-              name: item.name,
+              name: item.title,
               href: `/category/${item.name}`,
             }))}
           />
