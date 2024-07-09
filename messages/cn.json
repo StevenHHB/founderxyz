@@ -3,19 +3,19 @@
     "loading": "加载中..."
   },
   "Navigation": {
-    "title": "FounderXYZ资源目录",
-    "discover": "发现资源",
+    "title": "FounderXYZ",
+    "discover": "探索资源",
     "submit": "提交",
     "newtools": "新资源",
-    "startup": "创业公司",
+    "startup": "创业项目",
     "menu": "菜单"
   },
   "Footer": {
-    "title": "FounderXYZ资源目录",
+    "title": "FounderXYZ - 为创业者量身定制",
     "subTitle": "在FounderXYZ资源目录中发现最适合创始人的最佳资源！",
-    "support": "支持",
-    "tap4": "FounderXYZ",
-    "tattoo": "创始人纹身生成器",
+    "support": "最新资讯",
+    "tap4": "推特 / X",
+    "tattoo": "领英",
     "privacy": "隐私政策",
     "termsConditions": "条款和条件",
     "contactUs": "联系我们"
@@ -23,34 +23,34 @@
   "Faq": {
     "title": "常见问题",
     "1": {
-      "question": "FounderXYZ资源目录是什么？",
+      "question": "FounderXYZ是什么？",
       "answer": "FounderXYZ资源目录是一个平台，创始人可以通过访问各类资源列表来获得支持。这些资源包括创业点子、营销策略、资金来源等，旨在支持创始人各个阶段的需求。"
     },
     "2": {
-      "question": "如何在FounderXYZ资源目录中找到资源？",
+      "question": "如何在FounderXYZ中找到资源？",
       "answer-1": "1. 打开founderXYZ.com。",
       "answer-2": "2. 浏览FounderXYZ资源目录中的资源。",
       "answer-3": "3. 单击您需要的资源，查看详情并访问它。"
     },
     "3": {
-      "question": "FounderXYZ资源目录的主要功能是什么？",
+      "question": "FounderXYZ的主要功能是什么？",
       "answer-1": "1. 免费资源目录：在这里找到您喜爱的资源是免费的。",
       "answer-2": "2. 全面的资源列表：为创始人提供的完整资源列表。"
     },
     "4": {
-      "question": "向FounderXYZ资源目录提交资源是免费的吗？",
+      "question": "向FounderXYZ提交资源是免费的吗？",
       "answer": "是的，目前是免费的。但您应该分享FounderXYZ资源目录的反向链接！"
     },
     "5": {
-      "question": "FounderXYZ资源目录支持哪些资源类别？",
+      "question": "FounderXYZ支持哪些资源类别？",
       "answer": "我们支持广泛的类别，包括创业点子、启动策略、加速器、资金来源等。"
     },
     "6": {
-      "question": "FounderXYZ资源目录中的资源列表更新频率是多少？",
+      "question": "FounderXYZ中的资源列表更新频率是多少？",
       "answer": "资源列表每天更新。"
     },
     "7": {
-      "question": "FounderXYZ资源目录支持哪些工具？",
+      "question": "FounderXYZ支持哪些工具？",
       "answer": "您可以在这里找到各种工具，例如营销工具、生产力工具和开发工具。访问网站以探索所有工具。"
     },
     "8": {
@@ -58,7 +58,7 @@
       "answer": "如果内容没有出现，请尝试使用其他浏览器或清除缓存。如果问题仍然存在，请联系我们：contact@founderxyz.com。"
     },
     "9": {
-      "question": "FounderXYZ资源目录的内容是如何生成的？",
+      "question": "FounderXYZ的内容是如何生成的？",
       "answer": "资源的内容和描述由我们的专家团队策划。"
     },
     "10": {
@@ -66,13 +66,13 @@
       "answer": "FounderXYZ资源目录只是一个目录。资源的使用权基于各自的网站。"
     },
     "11": {
-      "question": "FounderXYZ资源目录的Web UI是开源的吗？",
+      "question": "FounderXYZ的Web UI是开源的吗？",
       "answer": "是的，我们将在GitHub上开源FounderXYZ资源目录的Web UI。请给我们点赞。"
     }
   },
   "FooterNavigation": {
     "privacyPolicy": {
-      "1-h1": "FounderXYZ资源目录隐私政策",
+      "1-h1": "FounderXYZ隐私政策",
       "1-p": "此页面用于通知访问者关于收集、使用和披露个人信息的政策，如果任何人决定使用我们的服务。如果您选择使用我们的服务，则表示您同意收集和使用与本政策相关的信息。我们收集的个人信息用于提供和改进服务。除非在本隐私政策中另有说明，否则我们不会与任何人分享您的信息。本隐私政策中使用的术语与我们的条款和条件中的术语具有相同的含义。",
       "2-h2": "1. 信息的收集和使用",
       "2-p": "为了提供更好的服务，在使用我们的服务时，我们可能会要求您提供某些可以识别您个人身份的信息。我们请求的信息将保存在您的设备上，我们不会以任何方式收集。该应用程序使用可能收集用于识别您的信息的第三方服务。",
@@ -95,7 +95,7 @@
       "8-p": "我们可能会不时更新我们的隐私政策。因此，建议您定期查看此页面的任何更改。我们将通过在此页面上发布新的隐私政策来通知您任何更改。这些更改在此页面上发布后立即生效。"
     },
     "termsConditions": {
-      "1-h1": "FounderXYZ资源目录服务条款",
+      "1-h1": "FounderXYZ服务条款",
       "1-p": "欢迎来到FounderXYZ资源目录！我们的网站位于https://founderxyz.com（\"网站\"），致力于为您提供最佳的创业资源。通过访问或使用我们的网站，您同意受这些服务条款（\"条款\"）的约束。如果您不同意任何条款，则禁止使用该网站。",
       "2-h2": "1. 使用许可",
       "2-p": "您被授予有限的、非排他性的、不可转让的许可，以个人、非商业目的使用本网站及其服务。未经我们事先书面同意，本许可证不包括任何复制、修改或分发本网站内容或将其用于商业目的的权利。",
@@ -118,7 +118,7 @@
   },
 "Home": {
   "title": "FounderXYZ - 探索最佳创业资源",
-  "subTitle": "在FounderXYZ资源目录中获取您喜欢的资源。资源列表每天更新，帮助创始人成功。",
+  "subTitle": "为创业者量身定制 | 集合产品思路，发布策略，融资加速器 & 推广渠道等全部必要资源",
   "ai-navigate": "资源列表",
   "exploreMore": "获取更多资源",
   "checkDetail": "查看详情",
@@ -132,7 +132,7 @@
 },
 "Submit": {
   "title": "提交您的资源",
-  "subTitle": "提交您的资源并从FounderXYZ资源目录获取流量",
+  "subTitle": "提交您的资源并从FounderXYZ获取流量",
   "website": "网站名称",
   "url": "网站URL",
   "submit": "提交",
@@ -159,26 +159,26 @@
 },
 "Explore": {
   "title": "发现最佳创业资源",
-  "subTitle": "在FounderXYZ资源目录中找到您喜爱的资源。资源列表每天更新，帮助创始人成功。"
+  "subTitle": "在FounderXYZ中找到您喜爱的资源。资源列表每天更新，帮助创始人成功。"
 },
 "Metadata": {
   "home": {
-    "title": "获取您的最佳创业资源 | FounderXYZ资源目录",
-    "description": "FounderXYZ资源目录提供全面的创业资源列表。找到最佳工具和支持，帮助您在创业旅程中取得成功。",
-    "keywords": "FounderXYZ, 创业资源, 创业支持"
+    "title": "FounderXYZ - 为创业者量身定制",
+    "description": "为创业者量身定制 | 集合产品思路，发布策略，融资加速器 & 推广渠道等全部必要资源",
+    "keywords": "FounderXYZ,产品推广，融资，加速器，创业者， 创业资源, 创业支持"
   },
   "ai": {
-    "titleSubfix": "FounderXYZ资源目录"
+    "titleSubfix": "FounderXYZ"
   },
   "explore": {
-    "title": "探索最佳创业资源 | FounderXYZ资源目录",
+    "title": "探索最佳创业资源 | FounderXYZ",
     "titlePrefix": "探索资源 |",
-    "titleSuffix": "FounderXYZ资源目录",
-    "description": "FounderXYZ资源目录提供全面的创业资源列表。找到最佳工具和支持，帮助您在创业旅程中取得成功。",
-    "keywords": "FounderXYZ, 创业资源, 创业支持"
+    "titleSuffix": "FounderXYZ",
+    "description": "为创业者量身定制 | 集合产品思路，发布策略，融资加速器 & 推广渠道等全部必要资源",
+    "keywords": "FounderXYZ,产品推广，融资，加速器，创业者， 创业资源, 创业支持"
   },
   "submit": {
-    "title": "提交您的资源并获取流量 | FounderXYZ资源目录"
+    "title": "提交您的资源并获取流量 | FounderXYZ"
   }
 }
 }

@@ -3,7 +3,7 @@
     "loading": "loading..."
   },
   "Navigation": {
-    "title": "FounderXYZ Resource Directory",
+    "title": "FounderXYZ",
     "discover": "Discover Resources",
     "submit": "Submit",
     "newtools": "New Resources",
@@ -11,11 +11,11 @@
     "menu": "menu"
   },
   "Footer": {
-    "title": "FounderXYZ Resource Directory",
-    "subTitle": "Discover the best resources for founders with the FounderXYZ Resource Directory!",
-    "support": "Support",
-    "tap4": "FounderXYZ",
-    "tattoo": "Founder Tattoo Generator",
+    "title": "FounderXYZ - Where founders thrive",
+    "subTitle": "Discover Product ideas, launch tactics, funding resources & everything necessary for aspiring founders!",
+    "support": "Get Updates",
+    "tap4": "Twitter / X",
+    "tattoo": "LinkedIn",
     "privacy": "Privacy policy",
     "termsConditions": "Terms & Conditions",
     "contactUs": "Contact Us"
@@ -23,7 +23,7 @@
 "Faq": {
   "title": "Frequently Asked Questions",
   "1": {
-    "question": "What is FounderXYZ Resource Directory?",
+    "question": "What is FounderXYZ?",
     "answer": "FounderXYZ Resource Directory is a platform where founders can thrive by accessing a curated list of resources across various categories. These include startup ideas, marketing strategies, funding sources, and more, designed to support founders at every stage of their journey."
   },
   "2": {
@@ -50,7 +50,7 @@
     "answer": "The list of resources is updated daily."
   },
   "7": {
-    "question": "Does the FounderXYZ Resource Directory support specific tools?",
+    "question": "Does the FounderXYZ support specific tools?",
     "answer": "You can find various tools such as marketing tools, productivity tools, and development tools here. Visit the website to explore all the tools."
   },
   "8": {
@@ -58,7 +58,7 @@
     "answer": "If the content isn't appearing, try a different browser or clear your cache. If issues persist, contact us at contact@founderxyz.com."
   },
   "9": {
-    "question": "How does the content of FounderXYZ Resource Directory get generated?",
+    "question": "How does the content of FounderXYZ get generated?",
     "answer": "The content and descriptions of the resources are curated by our team of experts."
   },
   "10": {
@@ -66,13 +66,13 @@
     "answer": "FounderXYZ Resource Directory is just a directory. The usage rights of the resources are based on the respective websites."
   },
   "11": {
-    "question": "Is the web UI of FounderXYZ Resource Directory open source?",
+    "question": "Is the web UI of FounderXYZ open source?",
     "answer": "Yes, we will open source the web UI of FounderXYZ Resource Directory on GitHub. Please star us."
   }
 },
 "FooterNavigation": {
   "privacyPolicy": {
-    "1-h1": "Privacy Policy for FounderXYZ Resource Directory",
+    "1-h1": "Privacy Policy for FounderXYZ",
     "1-p": "This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decides to use our Service. If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy. The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.",
     "2-h2": "1. Information Collection and Use",
     "2-p": "For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. The information that we request will be retained on your device and is not collected by us in any way. The app does use third-party services that may collect information used to identify you.",
@@ -95,7 +95,7 @@
     "8-p": "We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page."
   },
   "termsConditions": {
-    "1-h1": "Terms of Service for FounderXYZ Resource Directory",
+    "1-h1": "Terms of Service for FounderXYZ",
     "1-p": "Welcome to FounderXYZ Resource Directory! Our website, located at https://founderxyz.com (\"Website\"), is dedicated to providing you with the best resources for startup founders. By accessing or using our Website, you agree to be bound by these Terms of Service (\"Terms\"). If you do not agree with any part of the terms, then you are prohibited from using the Website.",
     "2-h2": "1. Use License",
     "2-p": "You are granted a limited, non-exclusive, non-transferable license to use the Website and its services for personal, non-commercial purposes. This license does not include any rights to copy, modify, or distribute the Website's content or use it for commercial purposes without our prior written consent.",
@@ -117,8 +117,8 @@
   "goHome": "go home"
 },
 "Home": {
-  "title": "Discover The Best Resources for Founders",
-  "subTitle": "Get your favorite resources in the FounderXYZ Resource Directory. Our list of resources is updated daily to help founders succeed.",
+  "title": "FounderXYZ - By founders, for founders",
+  "subTitle": "Where FOUNDERS thrive | Product ideas, launch tactics, accelerator links, funding resources & everything necessary for aspiring founders!",
   "ai-navigate": "Resource List",
   "exploreMore": "Get More Resources",
   "checkDetail": "View Detail",
@@ -132,7 +132,7 @@
 },
 "Submit": {
   "title": "Submit your Resource",
-  "subTitle": "Submit your resource and get traffic from FounderXYZ Resource Directory",
+  "subTitle": "Submit your resource and get traffic from FounderXYZ",
   "website": "Website Name",
   "url": "Website URL",
   "submit": "Submit",
@@ -159,26 +159,26 @@
 },
 "Explore": {
   "title": "Discover The Best Resources for Founders",
-  "subTitle": "Get your favorite resources in the FounderXYZ Resource Directory. Our list of resources is updated daily to help founders succeed."
+  "subTitle": "Get your favorite resources in the FounderXYZ. Our list of resources is updated daily to help founders succeed."
 },
 "Metadata": {
   "home": {
-    "title": "Get the Best Resources for Founders | FounderXYZ Resource Directory",
-    "description": "FounderXYZ Resource Directory provides a comprehensive list of resources for startup founders. Find the best tools and support to succeed in your entrepreneurial journey.",
-    "keywords": "FounderXYZ, startup resources, entrepreneurial support"
+    "title": "FounderXYZ - Where founders thrive",
+    "description": "Discover Product ideas, launch tactics, funding resources & everything necessary for aspiring founders!",
+    "keywords": "FounderXYZ, founder, founder resources, product launch, accelerators,startup, startup resources, entrepreneurial support"
   },
   "ai": {
-    "titleSubfix": "FounderXYZ Resource Directory"
+    "titleSubfix": "FounderXYZ"
   },
   "explore": {
-    "title": "Best Resources for Founders | FounderXYZ Resource Directory",
+    "title": "Best Resources for Founders | FounderXYZ",
     "titlePrefix": "Explore Resources |",
-    "titleSuffix": "FounderXYZ Resource Directory",
-    "description": "FounderXYZ Resource Directory provides a comprehensive list of resources for startup founders. Find the best tools and support to succeed in your entrepreneurial journey.",
-    "keywords": "FounderXYZ, startup resources, entrepreneurial support"
+    "titleSuffix": "FounderXYZ",
+    "description": "Discover Product ideas, launch tactics, funding resources & everything necessary for aspiring founders!",
+    "keywords": "FounderXYZ, founder, founder resources, product launch, accelerators,startup, startup resources, entrepreneurial support"
   },
   "submit": {
-    "title": "Submit your Resource and Get Traffic | FounderXYZ Resource Directory"
+    "title": "Submit your Resource and Get Traffic | FounderXYZ"
   }
 }
 }

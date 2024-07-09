@@ -34,11 +34,11 @@ export default function Footer() {
   const SupportLinks = [
     {
       title: t('tap4'),
-      href: 'https://www.founderXYZ.com',
+      href: 'https://x.com/real_founderxyz',
     },
     {
       title: t('tattoo'),
-      href: 'https://stevenhhb.com',
+      href: 'https://www.linkedin.com/company/founderxyz/',
     },
   ];
 
