@@ -24,33 +24,33 @@
   "title": "Frequently Asked Questions",
   "1": {
     "question": "What is FounderXYZ?",
-    "answer": "FounderXYZ Resource Directory is a platform where founders can thrive by accessing a curated list of resources across various categories. These include startup ideas, marketing strategies, funding sources, and more, designed to support founders at every stage of their journey."
+    "answer": "FounderXYZ is a platform where founders can thrive by accessing a curated list of resources across various categories. These include startup ideas, marketing strategies, funding sources, and more, designed to support founders at every stage of their journey."
   },
   "2": {
-    "question": "How do I find resources in the FounderXYZ Resource Directory?",
+    "question": "How do I find resources in FounderXYZ?",
     "answer-1": "1. Open founderXYZ.com.",
-    "answer-2": "2. Explore the resources in the FounderXYZ Resource Directory.",
+    "answer-2": "2. Explore the resources in FounderXYZ.",
     "answer-3": "3. Click the resource that you need to get the details and visit it."
   },
   "3": {
-    "question": "What are the main features of the FounderXYZ Resource Directory?",
+    "question": "What are the main features of the FounderXYZ?",
     "answer-1": "1. Free Resource Directory: It's free to find your favorite resources here.",
     "answer-2": "2. Comprehensive List: The complete list of resources for founders."
   },
   "4": {
-    "question": "Is it free to submit resources to the FounderXYZ Resource Directory?",
-    "answer": "Yes, it's currently free. However, you should share a backlink to the FounderXYZ Resource Directory!"
+    "question": "Is it free to submit resources to the FounderXYZ?",
+    "answer": "Yes, it's currently free. However, you should share a backlink to FounderXYZ!"
   },
   "5": {
-    "question": "What categories of resources does the FounderXYZ Resource Directory support?",
+    "question": "What categories of resources does FounderXYZ support?",
     "answer": "We support a wide range of categories including startup ideas, launch strategies, accelerators, funding sources, and more."
   },
   "6": {
-    "question": "How frequently is the resource list updated in the FounderXYZ Resource Directory?",
+    "question": "How frequently is the resource list updated in FounderXYZ?",
     "answer": "The list of resources is updated daily."
   },
   "7": {
-    "question": "Does the FounderXYZ support specific tools?",
+    "question": "Does FounderXYZ support specific tools?",
     "answer": "You can find various tools such as marketing tools, productivity tools, and development tools here. Visit the website to explore all the tools."
   },
   "8": {
@@ -63,11 +63,11 @@
   },
   "10": {
     "question": "What are the usage rights of the resources?",
-    "answer": "FounderXYZ Resource Directory is just a directory. The usage rights of the resources are based on the respective websites."
+    "answer": "FounderXYZ is just a directory. The usage rights of the resources are based on the respective websites."
   },
   "11": {
     "question": "Is the web UI of FounderXYZ open source?",
-    "answer": "Yes, we will open source the web UI of FounderXYZ Resource Directory on GitHub. Please star us."
+    "answer": "Yes, we will open source the web UI of FounderXYZ on GitHub. Please star us."
   }
 },
 "FooterNavigation": {

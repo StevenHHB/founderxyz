@@ -63,11 +63,11 @@
     },
     "10": {
       "question": "资源的使用权是什么？",
-      "answer": "FounderXYZ资源目录只是一个目录。资源的使用权基于各自的网站。"
+      "answer": "FounderXYZ只是一个目录。资源的使用权基于各自的网站。"
     },
     "11": {
       "question": "FounderXYZ的Web UI是开源的吗？",
-      "answer": "是的，我们将在GitHub上开源FounderXYZ资源目录的Web UI。请给我们点赞。"
+      "answer": "是的，我们将在GitHub上开源FounderXYZ的Web UI."
     }
   },
   "FooterNavigation": {
