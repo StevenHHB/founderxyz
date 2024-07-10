@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from 'react';
 import { WebNavigation } from '@/db/supabase/types';
@@ -29,38 +29,37 @@ export default function Content({
   const t = useTranslations('Category');
   const searchParams = useSearchParams();
 
-  const [navigationList, setNavigationList] = useState<WebNavigation[]>(initialNavigationList);
-  const [currentPage, setCurrentPage] = useState<number>(initialCurrentPage);
-  const [total, setTotal] = useState<number>(initialTotal);
+  const [navigationListState, setNavigationListState] = useState<WebNavigation[]>(initialNavigationList);
+  const [currentPageState, setCurrentPageState] = useState<number>(initialCurrentPage);
+  const [totalState, setTotalState] = useState<number>(initialTotal);
 
   useEffect(() => {
     const fetchNavigationData = async () => {
       const supabase = createClient();
       const code = searchParams.get('code');
       const pageNum = searchParams.get('pageNum') || '1';
-      const currentPage = Number(pageNum);
+      const currentPageLocal = Number(pageNum);
 
       if (!code) {
-        console.error('Code parameter is missing');
         return;
       }
 
-      const startRange = (currentPage - 1) * pageSize;
-      const endRange = currentPage * pageSize - 1;
+      const startRange = (currentPageLocal - 1) * pageSize;
+      const endRange = currentPageLocal * pageSize - 1;
 
-      const { data: navigationList, count } = await supabase
+      const { data: fetchedNavigationList, count } = await supabase
         .from('web_navigation')
         .select('*', { count: 'exact' })
         .eq('category_name', code)
         .range(startRange, endRange);
 
-      setNavigationList(navigationList || []);
-      setCurrentPage(currentPage);
-      setTotal(count || 0);
+      setNavigationListState(fetchedNavigationList || []);
+      setCurrentPageState(currentPageLocal);
+      setTotalState(count || 0);
     };
 
     fetchNavigationData();
-  }, [searchParams]);
+  }, [searchParams, pageSize]);
 
   return (
     <>
@@ -82,17 +81,17 @@ export default function Content({
         </div>
       </div>
       <div className='mt-3'>
-        {navigationList && !!navigationList.length ? (
+        {navigationListState && !!navigationListState.length ? (
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
-              {navigationList.map((item) => (
+              {navigationListState.map((item) => (
                 <WebNavCard key={item.id} {...item} />
               ))}
             </div>
             <div className='my-5 flex items-center justify-center lg:my-10'>
               <BasePagination
-                currentPage={currentPage}
-                total={total}
+                currentPage={currentPageState}
+                total={totalState}
                 pageSize={pageSize}
                 route={route}
                 subRoute='/page'
