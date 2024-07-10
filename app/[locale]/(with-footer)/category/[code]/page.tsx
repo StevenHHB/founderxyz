@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { code: string } })
   }
 
   return {
-    title: categoryList[0].title,
+    title: categoryList[0].title + 'hi',
   };
 }
 
