@@ -44,7 +44,9 @@ export default function NavigationDrawer({ open, setOpen }: { open: boolean; set
   };
 
   const onRoute = (route: string) => {
-    router.push(route);
+    // Append a timestamp to the URL query string to force refresh
+    const uniqueUrl = `${route}?timestamp=${new Date().getTime()}`;
+    router.push(uniqueUrl);
     onClose();
   };
 
