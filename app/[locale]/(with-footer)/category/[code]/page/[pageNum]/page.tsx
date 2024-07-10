@@ -4,13 +4,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/db/supabase/client';
 
-import { InfoPageSize, RevalidateOneHour } from '@/lib/constants';
+import Content from './Content';
 
-import Content from '../../Content';
-
-export const revalidate = RevalidateOneHour * 6;
-
-export async function generateMetadata({ params }: { params: { code: string; pageNum?: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { code: string; pageNum?: string } }) {
   const supabase = createClient();
   const { data: categoryList } = await supabase.from('navigation_category').select().eq('name', params.code);
 
@@ -45,9 +41,9 @@ export default async function Page({ params }: { params: { code: string; pageNum
   return (
     <Content
       headerTitle={categoryList[0]!.title || params.code}
-      navigationList={navigationList!}
-      currentPage={currentPage}
-      total={count!}
+      initialNavigationList={navigationList!}
+      initialCurrentPage={currentPage}
+      initialTotal={count!}
       pageSize={InfoPageSize}
       route={`/category/${params.code}`}
     />

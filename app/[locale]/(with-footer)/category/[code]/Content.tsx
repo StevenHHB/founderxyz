@@ -13,25 +13,25 @@ import WebNavCard from '@/components/webNav/WebNavCard';
 
 export default function Content({
   headerTitle,
-  navigationList: initialNavigationList,
-  currentPage: initialCurrentPage,
-  total: initialTotal,
+  initialNavigationList,
+  initialCurrentPage,
+  initialTotal,
   pageSize,
   route,
 }: {
   headerTitle: string;
-  navigationList: WebNavigation[];
-  currentPage: number;
-  total: number;
+  initialNavigationList: WebNavigation[];
+  initialCurrentPage: number;
+  initialTotal: number;
   pageSize: number;
   route: string;
 }) {
   const t = useTranslations('Category');
   const searchParams = useSearchParams();
 
-  const [navigationListState, setNavigationListState] = useState<WebNavigation[]>(initialNavigationList);
-  const [currentPageState, setCurrentPageState] = useState<number>(initialCurrentPage);
-  const [totalState, setTotalState] = useState<number>(initialTotal);
+  const [navigationList, setNavigationList] = useState<WebNavigation[]>(initialNavigationList);
+  const [currentPage, setCurrentPage] = useState<number>(initialCurrentPage);
+  const [total, setTotal] = useState<number>(initialTotal);
 
   useEffect(() => {
     const fetchNavigationData = async () => {
@@ -53,13 +53,13 @@ export default function Content({
         .eq('category_name', code)
         .range(startRange, endRange);
 
-      setNavigationListState(fetchedNavigationList || []);
-      setCurrentPageState(currentPageLocal);
-      setTotalState(count || 0);
+      setNavigationList(fetchedNavigationList || []);
+      setCurrentPage(currentPageLocal);
+      setTotal(count || 0);
     };
 
     fetchNavigationData();
-  }, [searchParams, pageSize]);
+  }, [searchParams.get('code'), searchParams.get('pageNum'), pageSize]);
 
   return (
     <>
@@ -81,18 +81,17 @@ export default function Content({
         </div>
       </div>
       <div className='mt-3'>
-        {navigationListState && !!navigationListState.length ? (
+        {navigationList && !!navigationList.length ? (
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
-              {navigationListState.map((item) => (
-                // eslint-disable-next-line react/jsx-props-no-spreading
+              {navigationList.map((item) => (
                 <WebNavCard key={item.id} {...item} />
               ))}
             </div>
             <div className='my-5 flex items-center justify-center lg:my-10'>
               <BasePagination
-                currentPage={currentPageState}
-                total={totalState}
+                currentPage={currentPage}
+                total={total}
                 pageSize={pageSize}
                 route={route}
                 subRoute='/page'
