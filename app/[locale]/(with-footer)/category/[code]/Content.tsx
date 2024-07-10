@@ -36,14 +36,22 @@ export default function Content({
   useEffect(() => {
     const fetchNavigationData = async () => {
       const supabase = createClient();
-      const currentPage = Number(searchParams.get('pageNum') || 1);
+      const code = searchParams.get('code');
+      const pageNum = searchParams.get('pageNum') || '1';
+      const currentPage = Number(pageNum);
+
+      if (!code) {
+        console.error('Code parameter is missing');
+        return;
+      }
+
       const startRange = (currentPage - 1) * pageSize;
       const endRange = currentPage * pageSize - 1;
 
       const { data: navigationList, count } = await supabase
         .from('web_navigation')
         .select('*', { count: 'exact' })
-        .eq('category_name', searchParams.get('code'))
+        .eq('category_name', code)
         .range(startRange, endRange);
 
       setNavigationList(navigationList || []);
