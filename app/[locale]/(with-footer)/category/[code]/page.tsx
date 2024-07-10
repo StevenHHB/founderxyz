@@ -34,12 +34,6 @@ export default async function Page({ params }: { params: { code: string } }) {
     notFound();
   }
 
-  console.log('Page Component Data:', {
-    categoryList,
-    navigationList,
-    count,
-  });
-
   return (
     <Content
       key={params.code}

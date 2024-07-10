@@ -23,15 +23,6 @@ export default function Content({
 }) {
   const t = useTranslations('Category');
 
-  console.log('Content Component Props:', {
-    headerTitle,
-    navigationList,
-    currentPage,
-    total,
-    pageSize,
-    route,
-  });
-
   return (
     <>
       <div className='mx-auto flex flex-col gap-3 py-5 lg:pt-10'>

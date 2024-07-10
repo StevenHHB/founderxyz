@@ -36,13 +36,6 @@ export default async function Page({ params }: { params: { code: string; pageNum
     notFound();
   }
 
-  console.log('Page Component Data with Pagination:', {
-    categoryList,
-    navigationList,
-    count,
-    currentPage,
-  });
-
   return (
     <Content
       key={`${params.code}-${currentPage}`}
