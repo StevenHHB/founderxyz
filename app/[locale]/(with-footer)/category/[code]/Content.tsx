@@ -23,6 +23,14 @@ export default function Content({
   route: string;
 }) {
   const t = useTranslations('Category');
+  console.log('Content Component Props:', {
+    headerTitle,
+    navigationList,
+    currentPage,
+    total,
+    pageSize,
+    route,
+  });
 
   return (
     <>
