@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { WebNavigation } from '@/db/supabase/types';
 import { useTranslations } from 'next-intl';
 
@@ -23,6 +22,7 @@ export default function Content({
   route: string;
 }) {
   const t = useTranslations('Category');
+
   console.log('Content Component Props:', {
     headerTitle,
     navigationList,
@@ -52,7 +52,7 @@ export default function Content({
         </div>
       </div>
       <div className='mt-3'>
-        {navigationList && !!navigationList?.length ? (
+        {navigationList && !!navigationList.length ? (
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
               {navigationList.map((item) => (
