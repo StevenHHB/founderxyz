@@ -1,10 +1,6 @@
-'use client';
-
-import { useEffect, useState } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
 import { WebNavigation } from '@/db/supabase/types';
 import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
-import { createClient } from '@/db/supabase/client';
 
 import Empty from '@/components/Empty';
 import ExploreBreadcrumb from '@/components/explore/ExploreBreadcrumb';
@@ -13,53 +9,20 @@ import WebNavCard from '@/components/webNav/WebNavCard';
 
 export default function Content({
   headerTitle,
-  initialNavigationList,
-  initialCurrentPage,
-  initialTotal,
+  navigationList,
+  currentPage,
+  total,
   pageSize,
   route,
 }: {
   headerTitle: string;
-  initialNavigationList: WebNavigation[];
-  initialCurrentPage: number;
-  initialTotal: number;
+  navigationList: WebNavigation[];
+  currentPage: number;
+  total: number;
   pageSize: number;
   route: string;
 }) {
   const t = useTranslations('Category');
-  const searchParams = useSearchParams();
-
-  const [navigationList, setNavigationList] = useState<WebNavigation[]>(initialNavigationList);
-  const [currentPage, setCurrentPage] = useState<number>(initialCurrentPage);
-  const [total, setTotal] = useState<number>(initialTotal);
-
-  useEffect(() => {
-    const fetchNavigationData = async () => {
-      const supabase = createClient();
-      const code = searchParams.get('code');
-      const pageNum = searchParams.get('pageNum') || '1';
-      const currentPageLocal = Number(pageNum);
-
-      if (!code) {
-        return;
-      }
-
-      const startRange = (currentPageLocal - 1) * pageSize;
-      const endRange = currentPageLocal * pageSize - 1;
-
-      const { data: fetchedNavigationList, count } = await supabase
-        .from('web_navigation')
-        .select('*', { count: 'exact' })
-        .eq('category_name', code)
-        .range(startRange, endRange);
-
-      setNavigationList(fetchedNavigationList || []);
-      setCurrentPage(currentPageLocal);
-      setTotal(count || 0);
-    };
-
-    fetchNavigationData();
-  }, [searchParams, pageSize]);
 
   return (
     <>
@@ -81,7 +44,7 @@ export default function Content({
         </div>
       </div>
       <div className='mt-3'>
-        {navigationList && !!navigationList.length ? (
+        {navigationList && !!navigationList?.length ? (
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
               {navigationList.map((item) => (

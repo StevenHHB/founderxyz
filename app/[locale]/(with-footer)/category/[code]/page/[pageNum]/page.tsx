@@ -26,8 +26,6 @@ export async function generateMetadata({ params }: { params: { code: string; pag
 export default async function Page({ params }: { params: { code: string; pageNum?: string } }) {
   const supabase = createClient();
   const currentPage = Number(params?.pageNum || 1);
-  const startRange = (currentPage - 1) * InfoPageSize;
-  const endRange = currentPage * InfoPageSize - 1;
 
   const [{ data: categoryList }, { data: navigationList, count }] = await Promise.all([
     supabase.from('navigation_category').select().eq('name', params.code),
@@ -35,7 +33,7 @@ export default async function Page({ params }: { params: { code: string; pageNum
       .from('web_navigation')
       .select('*', { count: 'exact' })
       .eq('category_name', params.code)
-      .range(startRange, endRange),
+      .range(0, InfoPageSize - 1),
   ]);
 
   if (!categoryList || !categoryList[0]) {
@@ -45,9 +43,9 @@ export default async function Page({ params }: { params: { code: string; pageNum
   return (
     <Content
       headerTitle={categoryList[0]!.title || params.code}
-      initialNavigationList={navigationList!}
-      initialCurrentPage={currentPage}
-      initialTotal={count!}
+      navigationList={navigationList!}
+      currentPage={currentPage}
+      total={count!}
       pageSize={InfoPageSize}
       route={`/category/${params.code}`}
     />
