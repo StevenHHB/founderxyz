@@ -4,9 +4,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/db/supabase/client';
 
-import Content from './Content';
+import { InfoPageSize, RevalidateOneHour } from '@/lib/constants';
 
-export async function generateMetadata({ params }: { params: { code: string; pageNum?: string } }) {
+import Content from '../../Content';
+
+export const revalidate = RevalidateOneHour * 6;
+
+export async function generateMetadata({ params }: { params: { code: string; pageNum?: string } }): Promise<Metadata> {
   const supabase = createClient();
   const { data: categoryList } = await supabase.from('navigation_category').select().eq('name', params.code);
 

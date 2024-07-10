@@ -44,6 +44,8 @@ export default function Content({
         return;
       }
 
+      console.log('Fetching data for category:', code, 'page number:', pageNum);
+
       const startRange = (currentPageLocal - 1) * pageSize;
       const endRange = currentPageLocal * pageSize - 1;
 
@@ -53,13 +55,15 @@ export default function Content({
         .eq('category_name', code)
         .range(startRange, endRange);
 
+      console.log('Fetched data:', fetchedNavigationList);
+
       setNavigationList(fetchedNavigationList || []);
       setCurrentPage(currentPageLocal);
       setTotal(count || 0);
     };
 
     fetchNavigationData();
-  }, [searchParams.get('code'), searchParams.get('pageNum'), pageSize]);
+  }, [searchParams, pageSize]);
 
   return (
     <>
@@ -85,6 +89,7 @@ export default function Content({
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
               {navigationList.map((item) => (
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 <WebNavCard key={item.id} {...item} />
               ))}
             </div>
