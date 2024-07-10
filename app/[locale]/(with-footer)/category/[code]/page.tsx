@@ -1,11 +1,7 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/db/supabase/client';
-
 import { InfoPageSize, RevalidateOneHour } from '@/lib/constants';
-
 import Content from './Content';
 
 export const revalidate = RevalidateOneHour * 6;
@@ -37,6 +33,7 @@ export default async function Page({ params }: { params: { code: string } }) {
   if (!categoryList || !categoryList[0]) {
     notFound();
   }
+
   console.log('Page Component Data:', {
     categoryList,
     navigationList,
@@ -45,6 +42,7 @@ export default async function Page({ params }: { params: { code: string } }) {
 
   return (
     <Content
+      key={params.code}
       headerTitle={categoryList[0]!.title || params.code}
       navigationList={navigationList!}
       currentPage={1}
