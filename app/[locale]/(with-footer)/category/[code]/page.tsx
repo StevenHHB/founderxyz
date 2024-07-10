@@ -37,6 +37,11 @@ export default async function Page({ params }: { params: { code: string } }) {
   if (!categoryList || !categoryList[0]) {
     notFound();
   }
+  console.log('Page Component Data:', {
+    categoryList,
+    navigationList,
+    count,
+  });
 
   return (
     <Content
