@@ -1,11 +1,7 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/db/supabase/client';
-
 import { InfoPageSize, RevalidateOneHour } from '@/lib/constants';
-
 import Content from '../../Content';
 
 export const revalidate = RevalidateOneHour * 6;
@@ -19,7 +15,7 @@ export async function generateMetadata({ params }: { params: { code: string; pag
   }
 
   return {
-    title: categoryList[0].title,
+    title: `${categoryList[0].title} hihihi`,
   };
 }
 
@@ -42,6 +38,7 @@ export default async function Page({ params }: { params: { code: string; pageNum
 
   return (
     <Content
+      key={`${params.code}-${currentPage}`}
       headerTitle={categoryList[0]!.title || params.code}
       navigationList={navigationList!}
       currentPage={currentPage}
