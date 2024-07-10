@@ -1,7 +1,9 @@
+"use client";
+
 import { useEffect, useState } from 'react';
 import { WebNavigation } from '@/db/supabase/types';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { createClient } from '@/db/supabase/client';
 
 import Empty from '@/components/Empty';
@@ -25,7 +27,7 @@ export default function Content({
   route: string;
 }) {
   const t = useTranslations('Category');
-  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [navigationList, setNavigationList] = useState<WebNavigation[]>(initialNavigationList);
   const [currentPage, setCurrentPage] = useState<number>(initialCurrentPage);
@@ -34,14 +36,14 @@ export default function Content({
   useEffect(() => {
     const fetchNavigationData = async () => {
       const supabase = createClient();
-      const currentPage = Number(router.query.pageNum || 1);
+      const currentPage = Number(searchParams.get('pageNum') || 1);
       const startRange = (currentPage - 1) * pageSize;
       const endRange = currentPage * pageSize - 1;
 
       const { data: navigationList, count } = await supabase
         .from('web_navigation')
         .select('*', { count: 'exact' })
-        .eq('category_name', router.query.code)
+        .eq('category_name', searchParams.get('code'))
         .range(startRange, endRange);
 
       setNavigationList(navigationList || []);
@@ -50,7 +52,7 @@ export default function Content({
     };
 
     fetchNavigationData();
-  }, [router.query.code, router.query.pageNum]);
+  }, [searchParams]);
 
   return (
     <>
