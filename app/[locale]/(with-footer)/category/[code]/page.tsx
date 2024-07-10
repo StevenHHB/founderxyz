@@ -41,9 +41,9 @@ export default async function Page({ params }: { params: { code: string } }) {
   return (
     <Content
       headerTitle={categoryList[0]!.title || params.code}
-      navigationList={navigationList!}
-      currentPage={1}
-      total={count!}
+      initialNavigationList={navigationList!}
+      initialCurrentPage={1}
+      initialTotal={count!}
       pageSize={InfoPageSize}
       route={`/category/${params.code}`}
     />
