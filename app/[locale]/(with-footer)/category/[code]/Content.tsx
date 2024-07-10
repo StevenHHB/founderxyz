@@ -1,6 +1,8 @@
-/* eslint-disable react/jsx-props-no-spreading */
+import { useEffect, useState } from 'react';
 import { WebNavigation } from '@/db/supabase/types';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/router';
+import { createClient } from '@/db/supabase/client';
 
 import Empty from '@/components/Empty';
 import ExploreBreadcrumb from '@/components/explore/ExploreBreadcrumb';
@@ -9,9 +11,9 @@ import WebNavCard from '@/components/webNav/WebNavCard';
 
 export default function Content({
   headerTitle,
-  navigationList,
-  currentPage,
-  total,
+  navigationList: initialNavigationList,
+  currentPage: initialCurrentPage,
+  total: initialTotal,
   pageSize,
   route,
 }: {
@@ -23,6 +25,32 @@ export default function Content({
   route: string;
 }) {
   const t = useTranslations('Category');
+  const router = useRouter();
+
+  const [navigationList, setNavigationList] = useState<WebNavigation[]>(initialNavigationList);
+  const [currentPage, setCurrentPage] = useState<number>(initialCurrentPage);
+  const [total, setTotal] = useState<number>(initialTotal);
+
+  useEffect(() => {
+    const fetchNavigationData = async () => {
+      const supabase = createClient();
+      const currentPage = Number(router.query.pageNum || 1);
+      const startRange = (currentPage - 1) * pageSize;
+      const endRange = currentPage * pageSize - 1;
+
+      const { data: navigationList, count } = await supabase
+        .from('web_navigation')
+        .select('*', { count: 'exact' })
+        .eq('category_name', router.query.code)
+        .range(startRange, endRange);
+
+      setNavigationList(navigationList || []);
+      setCurrentPage(currentPage);
+      setTotal(count || 0);
+    };
+
+    fetchNavigationData();
+  }, [router.query.code, router.query.pageNum]);
 
   return (
     <>
@@ -44,7 +72,7 @@ export default function Content({
         </div>
       </div>
       <div className='mt-3'>
-        {navigationList && !!navigationList?.length ? (
+        {navigationList && !!navigationList.length ? (
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
               {navigationList.map((item) => (
