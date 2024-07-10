@@ -46,7 +46,7 @@ export default function Content({
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
               {navigationList.map((item) => (
-                <WebNavCard key={item.id} id={item.id} title={item.title} description={item.description} />
+                <WebNavCard key={item.id} {...item} />
               ))}
             </div>
             <div className='my-5 flex items-center justify-center lg:my-10'>
