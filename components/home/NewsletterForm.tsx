@@ -55,23 +55,8 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   return (
-    <FormProvider
-      {...formMethods}
-      watch={formMethods.watch}
-      getValues={formMethods.getValues}
-      getFieldState={formMethods.getFieldState}
-      setError={formMethods.setError}
-      clearErrors={formMethods.clearErrors}
-      setValue={formMethods.setValue}
-      trigger={formMethods.trigger}
-      control={formMethods.control}
-      formState={formMethods.formState}
-      handleSubmit={formMethods.handleSubmit}
-      register={formMethods.register}
-      reset={formMethods.reset}
-      setFocus={formMethods.setFocus}
-      unregister={formMethods.unregister}
-    >
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <FormProvider {...formMethods}>
       <form
         onSubmit={formMethods.handleSubmit(onSubmit)}
         className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
