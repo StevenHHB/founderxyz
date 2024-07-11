@@ -52,7 +52,6 @@ export default async function Page() {
         <div className='flex flex-col'>
           <p className='text-center text-sm font-bold text-white lg:text-base'>{t('subscribePrompt')}</p>
           <NewsletterForm className='mx-auto' />
-          <Faq />
         </div>
         <div className='flex w-full items-center justify-center'>
           <SearchForm />
