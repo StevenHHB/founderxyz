@@ -180,5 +180,12 @@
   "submit": {
     "title": "Submit your Resource and Get Traffic | FounderXYZ"
   }
+},
+  "Newsletter": {
+    "name": "Name",
+    "email": "Email",
+    "subscribe": "Subscribe",
+    "success": "Thank you for subscribing!",
+    "networkError": "Network error, please try again later."
 }
 }

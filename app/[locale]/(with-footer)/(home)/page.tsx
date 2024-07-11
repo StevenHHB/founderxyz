@@ -9,6 +9,7 @@ import { RevalidateOneHour } from '@/lib/constants';
 import Faq from '@/components/Faq';
 import SearchForm from '@/components/home/SearchForm';
 import WebNavCardList from '@/components/webNav/WebNavCardList';
+import NewsletterForm from '@/components/home/NewsletterForm';
 
 import { TagList } from './Tag';
 
@@ -47,6 +48,16 @@ export default async function Page() {
         <div className='my-5 flex flex-col text-center lg:mx-auto lg:my-10 lg:gap-1'>
           <h1 className='text-2xl font-bold text-white lg:text-5xl'>{t('title')}</h1>
           <h2 className='text-balance text-xs font-bold text-white lg:text-sm'>{t('subTitle')}</h2>
+        </div>
+        <div className='flex flex-col'>
+          <div className='my-5 flex flex-col text-center lg:mx-auto lg:my-10 lg:gap-1'>
+            <h1 className='bg-clip-text text-2xl font-bold text-white lg:h-[56px] lg:text-5xl'>{t('title')}</h1>
+            <div>
+              <h2 className='text-balance text-xs font-bold text-white lg:text-sm'>{t('subTitle')}</h2>
+            </div>
+          </div>
+          <NewsletterForm className='mx-auto' />
+          <Faq />
         </div>
         <div className='flex w-full items-center justify-center'>
           <SearchForm />

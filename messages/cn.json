@@ -179,6 +179,13 @@
   },
   "submit": {
     "title": "提交您的资源并获取流量 | FounderXYZ"
-  }
+  },
+  "Newsletter": {
+    "name": "姓名",
+    "email": "电子邮箱",
+    "subscribe": "订阅更新",
+    "success": "感谢您的订阅!",
+    "networkError": "订阅错误，请再次尝试。"
+}
 }
 }
