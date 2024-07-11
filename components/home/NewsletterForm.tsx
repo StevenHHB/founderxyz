@@ -119,3 +119,6 @@ export default function NewsletterForm({ className }: { className?: string }) {
     </FormProvider>
   );
 }
+
+
+// Ensure there is a newline at the end of the file.
