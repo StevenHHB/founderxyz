@@ -46,7 +46,14 @@ export default function Content({
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
               {navigationList.map((item) => (
-                <WebNavCard key={item.id} {...item} />
+                <WebNavCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  description={item.description}
+                  image_url={item.image_url}
+                // Pass all required props explicitly
+                />
               ))}
             </div>
             <div className='my-5 flex items-center justify-center lg:my-10'>
