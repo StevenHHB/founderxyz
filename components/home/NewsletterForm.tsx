@@ -1,122 +1,56 @@
-'use client';
-
-import { useState } from 'react';
-import { createClient } from '@/db/supabase/client';
-import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
-import { toast } from 'sonner';
-import { z } from 'zod';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { useTranslations } from 'next-intl';
-
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import Spinning from '@/components/Spinning';
+import { cn } from '@/lib/utils';
 
 const FormSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email address'),
+  email: z.string().email(),
 });
 
-type FormSchemaType = z.infer<typeof FormSchema>;
-
 export default function NewsletterForm({ className }: { className?: string }) {
-  const supabase = createClient();
-  const t = useTranslations('Newsletter');
-
-  const [loading, setLoading] = useState(false);
-
-  const formMethods = useForm<FormSchemaType>({
+  const t = useTranslations('Home');
+  const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: '',
       email: '',
     },
   });
 
-  const onSubmit: SubmitHandler<FormSchemaType> = async (formData) => {
-    let errMsg: any = t('networkError');
-    try {
-      setLoading(true);
-      const { error } = await supabase.from('newsletter_subscriptions').insert({
-        name: formData.name,
-        email: formData.email,
-      });
-      if (error) {
-        errMsg = error.message;
-        throw new Error();
-      }
-      toast.success(t('success'));
-      formMethods.reset();
-    } catch (error) {
-      toast.error(errMsg);
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    // Handle form submission
+    console.log(data);
   };
 
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <FormProvider {...formMethods}>
-      <form
-        onSubmit={formMethods.handleSubmit(onSubmit)}
-        className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
-      >
-        <div className='space-y-3 lg:space-y-5'>
-          <FormField
-            control={formMethods.control}
-            name='name'
-            render={({ field }) => (
-              <FormItem className='space-y-1'>
-                <FormLabel>{t('name')}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='Your Name'
-                    className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                    value={field.value}
-                    onChange={field.onChange}
-                    onBlur={field.onBlur}
-                    name={field.name}
-                    ref={field.ref}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={formMethods.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem className='space-y-1'>
-                <FormLabel>{t('email')}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='Your Email'
-                    className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                    value={field.value}
-                    onChange={field.onChange}
-                    onBlur={field.onBlur}
-                    name={field.name}
-                    ref={field.ref}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <div className='flex flex-col gap-[10px] lg:gap-8'>
-          <button
-            type='submit'
-            disabled={loading}
-            className={`flex-center mt-auto h-[48px] w-full gap-4 rounded-[8px] bg-white text-center font-bold text-black hover:cursor-pointer hover:opacity-80 ${
-              loading && 'hover:cursor-not-allowed'
-            }`}
-          >
-            {loading ? <Spinning className='size-[22px]' /> : t('subscribe')}
-          </button>
-        </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={cn('flex flex-col items-center lg:flex-row lg:space-x-3', className)}>
+        <FormField
+          control={form.control}
+          name='email'
+          render={({ field }) => (
+            <FormItem className='w-full lg:w-auto'>
+              <FormControl>
+                <Input
+                  placeholder={t('subscribePrompt')}
+                  {...field}
+                  className='h-10 w-full rounded-l-md border border-white/40 bg-transparent px-3 py-2 text-sm placeholder:text-white/40 focus:outline-none focus:ring-0 lg:h-12 lg:w-80'
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <button
+          type='submit'
+          className='mt-3 h-10 w-full rounded-r-md bg-white px-5 py-2 text-sm font-bold text-black hover:opacity-80 lg:mt-0 lg:h-12 lg:w-auto'
+        >
+          {t('subscribe')}
+        </button>
       </form>
-    </FormProvider>
+    </Form>
   );
 }
