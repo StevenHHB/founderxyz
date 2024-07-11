@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/db/supabase/client';
-import { useForm, FieldValues } from 'react-hook-form';
+import { useForm, Control, FieldValues } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
