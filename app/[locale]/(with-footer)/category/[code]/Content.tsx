@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { WebNavigation } from '@/db/supabase/types';
 import { useTranslations } from 'next-intl';
-
 import Empty from '@/components/Empty';
 import ExploreBreadcrumb from '@/components/explore/ExploreBreadcrumb';
 import BasePagination from '@/components/page/BasePagination';
@@ -44,7 +42,7 @@ export default function Content({
         </div>
       </div>
       <div className='mt-3'>
-        {navigationList && !!navigationList?.length ? (
+        {navigationList && !!navigationList.length ? (
           <>
             <div className='grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4'>
               {navigationList.map((item) => (
