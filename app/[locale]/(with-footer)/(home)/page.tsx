@@ -50,12 +50,7 @@ export default async function Page() {
           <h2 className='text-balance text-xs font-bold text-white lg:text-sm'>{t('subTitle')}</h2>
         </div>
         <div className='flex flex-col'>
-          <div className='my-5 flex flex-col text-center lg:mx-auto lg:my-10 lg:gap-1'>
-            <h1 className='bg-clip-text text-2xl font-bold text-white lg:h-[56px] lg:text-5xl'>{t('title')}</h1>
-            <div>
-              <h2 className='text-balance text-xs font-bold text-white lg:text-sm'>{t('subTitle')}</h2>
-            </div>
-          </div>
+          <p className='text-center text-sm font-bold text-white lg:text-base'>{t('subscribePrompt')}</p>
           <NewsletterForm className='mx-auto' />
           <Faq />
         </div>
@@ -66,7 +61,7 @@ export default async function Page() {
           <TagList
             data={categoryList!.map((item) => ({
               id: String(item.id),
-              name: item.title,
+              name: item.name,
               href: `/category/${item.name}`,
             }))}
           />

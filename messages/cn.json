@@ -119,6 +119,7 @@
 "Home": {
   "title": "FounderXYZ - 探索最佳创业资源",
   "subTitle": "为创业者量身定制 | 集合产品思路，发布策略，融资加速器 & 推广渠道等全部必要资源",
+  "subscribePrompt": "留下您的电子邮件以获取全部最新资源！",
   "ai-navigate": "资源列表",
   "exploreMore": "获取更多资源",
   "checkDetail": "查看详情",

@@ -119,6 +119,7 @@
 "Home": {
   "title": "FounderXYZ - By founders, for founders",
   "subTitle": "Product ideas, launch tactics, accelerator links, funding resources & everything necessary for aspiring founders!",
+  "subscribePrompt": "Leave your email here to get all latest resources!",
   "ai-navigate": "Resource List",
   "exploreMore": "Get More Resources",
   "checkDetail": "View Detail",
