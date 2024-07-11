@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/* update */
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/db/supabase/client';
 
-import { RevalidateOneHour } from '@/lib/constants';
+import { InfoPageSize, RevalidateOneHour } from '@/lib/constants';
 
 import Content from '../../Content';
 
@@ -28,23 +27,18 @@ export default async function Page({ params }: { params: { code: string; pageNum
   const supabase = createClient();
   const currentPage = Number(params?.pageNum || 1);
 
-  const [{ data: categoryList }, { count }] = await Promise.all([
+  const [{ data: categoryList }, { data: navigationList, count }] = await Promise.all([
     supabase.from('navigation_category').select().eq('name', params.code),
     supabase
       .from('web_navigation')
       .select('*', { count: 'exact' })
-      .eq('category_name', params.code),
+      .eq('category_name', params.code)
+      .range((currentPage - 1) * InfoPageSize, currentPage * InfoPageSize - 1),
   ]);
 
   if (!categoryList || !categoryList[0]) {
     notFound();
   }
-
-  const { data: navigationList } = await supabase
-    .from('web_navigation')
-    .select('*')
-    .eq('category_name', params.code)
-    .range(0, count! - 1); // Fetch all results
 
   return (
     <Content
@@ -52,7 +46,7 @@ export default async function Page({ params }: { params: { code: string; pageNum
       navigationList={navigationList!}
       currentPage={currentPage}
       total={count!}
-      pageSize={count!} // Set pageSize to total count
+      pageSize={InfoPageSize}
       route={`/category/${params.code}`}
     />
   );
