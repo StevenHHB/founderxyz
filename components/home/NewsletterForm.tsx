@@ -69,7 +69,11 @@ export default function NewsletterForm({ className }: { className?: string }) {
                                     <Input
                                         placeholder='Your Name'
                                         className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                                        {...field}
+                                        value={field.value}
+                                        onChange={field.onChange}
+                                        onBlur={field.onBlur}
+                                        name={field.name}
+                                        ref={field.ref}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -86,7 +90,11 @@ export default function NewsletterForm({ className }: { className?: string }) {
                                     <Input
                                         placeholder='Your Email'
                                         className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                                        {...field}
+                                        value={field.value}
+                                        onChange={field.onChange}
+                                        onBlur={field.onBlur}
+                                        name={field.name}
+                                        ref={field.ref}
                                     />
                                 </FormControl>
                                 <FormMessage />
