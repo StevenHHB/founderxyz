@@ -8,7 +8,7 @@ import { RevalidateOneHour } from '@/lib/constants';
 
 import Content from './Content';
 
-export const revalidate = RevalidateOneHour * 6;
+export const revalidate = RevalidateOneHour * 0.01;
 
 export async function generateMetadata({ params }: { params: { code: string } }): Promise<Metadata> {
   const supabase = createClient();
