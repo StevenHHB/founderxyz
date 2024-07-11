@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/db/supabase/client';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -23,7 +23,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
 
   const [loading, setLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const formMethods = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: '',
@@ -44,7 +44,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
         throw new Error();
       }
       toast.success(t('success'));
-      form.reset();
+      formMethods.reset();
     } catch (error) {
       toast.error(errMsg);
     } finally {
@@ -53,67 +53,69 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   return (
-    <Form form={form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
-      >
-        <div className='space-y-3 lg:space-y-5'>
-          <FormField
-            control={form.control}
-            name='name'
-            render={({ field }) => (
-              <FormItem className='space-y-1'>
-                <FormLabel>{t('name')}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='Your Name'
-                    className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                    value={field.value}
-                    onChange={field.onChange}
-                    onBlur={field.onBlur}
-                    name={field.name}
-                    ref={field.ref}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem className='space-y-1'>
-                <FormLabel>{t('email')}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='Your Email'
-                    className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                    value={field.value}
-                    onChange={field.onChange}
-                    onBlur={field.onBlur}
-                    name={field.name}
-                    ref={field.ref}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <div className='flex flex-col gap-[10px] lg:gap-8'>
-          <button
-            type='submit'
-            disabled={loading}
-            className={`flex-center mt-auto h-[48px] w-full gap-4 rounded-[8px] bg-white text-center font-bold text-black hover:cursor-pointer hover:opacity-80 ${
-              loading && 'hover:cursor-not-allowed'
-            }`}
-          >
-            {loading ? <Spinning className='size-[22px]' /> : t('subscribe')}
-          </button>
-        </div>
-      </form>
-    </Form>
+    <FormProvider {...formMethods}>
+      <Form>
+        <form
+          onSubmit={formMethods.handleSubmit(onSubmit)}
+          className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
+        >
+          <div className='space-y-3 lg:space-y-5'>
+            <FormField
+              control={formMethods.control}
+              name='name'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>{t('name')}</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder='Your Name'
+                      className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      name={field.name}
+                      ref={field.ref}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={formMethods.control}
+              name='email'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>{t('email')}</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder='Your Email'
+                      className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      name={field.name}
+                      ref={field.ref}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className='flex flex-col gap-[10px] lg:gap-8'>
+            <button
+              type='submit'
+              disabled={loading}
+              className={`flex-center mt-auto h-[48px] w-full gap-4 rounded-[8px] bg-white text-center font-bold text-black hover:cursor-pointer hover:opacity-80 ${
+                loading && 'hover:cursor-not-allowed'
+              }`}
+            >
+              {loading ? <Spinning className='size-[22px]' /> : t('subscribe')}
+            </button>
+          </div>
+        </form>
+      </Form>
+    </FormProvider>
   );
 }
