@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/db/supabase/client';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -33,7 +33,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
         },
     });
 
-    const onSubmit = async (formData: FormSchemaType) => {
+    const onSubmit: SubmitHandler<FormSchemaType> = async (formData) => {
         let errMsg: any = t('networkError');
         try {
             setLoading(true);
@@ -55,16 +55,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
     };
 
     return (
-        <Form
-            control={form.control}
-            handleSubmit={form.handleSubmit}
-            reset={form.reset}
-            formState={form.formState}
-            getValues={form.getValues}
-            setValue={form.setValue}
-            trigger={form.trigger}
-            watch={form.watch}
-        >
+        <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
@@ -80,11 +71,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
                                     <Input
                                         placeholder='Your Name'
                                         className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                        onBlur={field.onBlur}
-                                        name={field.name}
-                                        ref={field.ref}
+                                        {...field}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -101,11 +88,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
                                     <Input
                                         placeholder='Your Email'
                                         className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                        onBlur={field.onBlur}
-                                        name={field.name}
-                                        ref={field.ref}
+                                        {...field}
                                     />
                                 </FormControl>
                                 <FormMessage />
