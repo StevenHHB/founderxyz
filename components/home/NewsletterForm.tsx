@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/db/supabase/client';
-import { useForm, Control, FieldValues } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,13 +17,15 @@ const FormSchema = z.object({
   email: z.string().email('Invalid email address'),
 });
 
+type FormSchemaType = z.infer<typeof FormSchema>;
+
 export default function NewsletterForm({ className }: { className?: string }) {
   const supabase = createClient();
   const t = useTranslations('Newsletter');
 
   const [loading, setLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: '',
@@ -31,7 +33,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
     },
   });
 
-  const onSubmit = async (formData: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (formData: FormSchemaType) => {
     let errMsg: any = t('networkError');
     try {
       setLoading(true);
@@ -53,16 +55,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   return (
-    <Form
-      control={form.control as unknown as Control<FieldValues>}
-      handleSubmit={form.handleSubmit}
-      reset={form.reset}
-      formState={form.formState}
-      getValues={form.getValues}
-      setValue={form.setValue}
-      trigger={form.trigger}
-      watch={form.watch}
-    >
+    <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
