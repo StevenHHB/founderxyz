@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/db/supabase/client';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,13 +17,15 @@ const FormSchema = z.object({
   email: z.string().email('Invalid email address'),
 });
 
+type FormSchemaType = z.infer<typeof FormSchema>;
+
 export default function NewsletterForm({ className }: { className?: string }) {
   const supabase = createClient();
   const t = useTranslations('Newsletter');
 
   const [loading, setLoading] = useState(false);
 
-  const formMethods = useForm<z.infer<typeof FormSchema>>({
+  const formMethods = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: '',
@@ -31,7 +33,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
     },
   });
 
-  const onSubmit = async (formData: z.infer<typeof FormSchema>) => {
+  const onSubmit: SubmitHandler<FormSchemaType> = async (formData) => {
     let errMsg: any = t('networkError');
     try {
       setLoading(true);
@@ -54,7 +56,8 @@ export default function NewsletterForm({ className }: { className?: string }) {
 
   return (
     <FormProvider
-      watch={formMethods.watch<z.infer<typeof FormSchema>>()}
+      {...formMethods}
+      watch={formMethods.watch}
       getValues={formMethods.getValues}
       getFieldState={formMethods.getFieldState}
       setError={formMethods.setError}
@@ -64,74 +67,71 @@ export default function NewsletterForm({ className }: { className?: string }) {
       control={formMethods.control}
       formState={formMethods.formState}
       handleSubmit={formMethods.handleSubmit}
-      reset={formMethods.reset}
-      resetField={formMethods.resetField}
-      unregister={formMethods.unregister}
       register={formMethods.register}
+      reset={formMethods.reset}
+      setFocus={formMethods.setFocus}
+      unregister={formMethods.unregister}
     >
-      <div>
-        <form
-          onSubmit={formMethods.handleSubmit(onSubmit)}
-          className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
-        >
-          <div className='space-y-3 lg:space-y-5'>
-            <FormField
-              control={formMethods.control}
-              name='name'
-              render={({ field }) => (
-                <FormItem className='space-y-1'>
-                  <FormLabel>{t('name')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder='Your Name'
-                      className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                      value={field.value}
-                      onChange={field.onChange}
-                      onBlur={field.onBlur}
-                      name={field.name}
-                      ref={field.ref}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={formMethods.control}
-              name='email'
-              render={({ field }) => (
-                <FormItem className='space-y-1'>
-                  <FormLabel>{t('email')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder='Your Email'
-                      className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
-                      value={field.value}
-                      onChange={field.onChange}
-                      onBlur={field.onBlur}
-                      name={field.name}
-                      ref={field.ref}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className='flex flex-col gap-[10px] lg:gap-8'>
-            <button
-              type='submit'
-              disabled={loading}
-              className={`flex-center mt-auto h-[48px] w-full gap-4 rounded-[8px] bg-white text-center font-bold text-black hover:cursor-pointer hover:opacity-80 ${
-                loading && 'hover:cursor-not-allowed'
-              }`}
-            >
-              {loading ? <Spinning className='size-[22px]' /> : t('subscribe')}
-            </button>
-          </div>
-        </form>
-      </div>
+      <form
+        onSubmit={formMethods.handleSubmit(onSubmit)}
+        className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
+      >
+        <div className='space-y-3 lg:space-y-5'>
+          <FormField
+            control={formMethods.control}
+            name='name'
+            render={({ field }) => (
+              <FormItem className='space-y-1'>
+                <FormLabel>{t('name')}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder='Your Name'
+                    className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    name={field.name}
+                    ref={field.ref}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={formMethods.control}
+            name='email'
+            render={({ field }) => (
+              <FormItem className='space-y-1'>
+                <FormLabel>{t('email')}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder='Your Email'
+                    className='input-border-pink h-[42px] w-full rounded-[8px] border-[0.5px] bg-dark-bg p-5'
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    name={field.name}
+                    ref={field.ref}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className='flex flex-col gap-[10px] lg:gap-8'>
+          <button
+            type='submit'
+            disabled={loading}
+            className={`flex-center mt-auto h-[48px] w-full gap-4 rounded-[8px] bg-white text-center font-bold text-black hover:cursor-pointer hover:opacity-80 ${
+              loading && 'hover:cursor-not-allowed'
+            }`}
+          >
+            {loading ? <Spinning className='size-[22px]' /> : t('subscribe')}
+          </button>
+        </div>
+      </form>
     </FormProvider>
   );
 }
-
