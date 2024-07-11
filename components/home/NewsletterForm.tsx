@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
@@ -26,7 +27,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   return (
-    <Form {...form}>
+    <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={cn('flex flex-col items-center lg:flex-row lg:space-x-3', className)}>
         <FormField
           control={form.control}
@@ -51,6 +52,6 @@ export default function NewsletterForm({ className }: { className?: string }) {
           {t('subscribe')}
         </button>
       </form>
-    </Form>
+    </FormProvider>
   );
 }
