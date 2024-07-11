@@ -53,7 +53,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   return (
-    <Form {...form}>
+    <Form form={form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
