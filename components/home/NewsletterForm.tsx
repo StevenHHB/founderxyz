@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { createClient } from '@/db/supabase/client';
-import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Spinning from '@/components/Spinning';
 
@@ -17,15 +17,13 @@ const FormSchema = z.object({
   email: z.string().email('Invalid email address'),
 });
 
-type FormSchemaType = z.infer<typeof FormSchema>;
-
 export default function NewsletterForm({ className }: { className?: string }) {
   const supabase = createClient();
   const t = useTranslations('Newsletter');
 
   const [loading, setLoading] = useState(false);
 
-  const formMethods = useForm<FormSchemaType>({
+  const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: '',
@@ -33,7 +31,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
     },
   });
 
-  const onSubmit: SubmitHandler<FormSchemaType> = async (formData) => {
+  const onSubmit = async (formData: z.infer<typeof FormSchema>) => {
     let errMsg: any = t('networkError');
     try {
       setLoading(true);
@@ -46,7 +44,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
         throw new Error();
       }
       toast.success(t('success'));
-      formMethods.reset();
+      form.reset();
     } catch (error) {
       toast.error(errMsg);
     } finally {
@@ -55,14 +53,14 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   return (
-    <FormProvider {...formMethods}>
+    <Form {...form}>
       <form
-        onSubmit={formMethods.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
       >
         <div className='space-y-3 lg:space-y-5'>
           <FormField
-            control={formMethods.control}
+            control={form.control}
             name='name'
             render={({ field }) => (
               <FormItem className='space-y-1'>
@@ -83,7 +81,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
             )}
           />
           <FormField
-            control={formMethods.control}
+            control={form.control}
             name='email'
             render={({ field }) => (
               <FormItem className='space-y-1'>
@@ -116,6 +114,6 @@ export default function NewsletterForm({ className }: { className?: string }) {
           </button>
         </div>
       </form>
-    </FormProvider>
+    </Form>
   );
 }
