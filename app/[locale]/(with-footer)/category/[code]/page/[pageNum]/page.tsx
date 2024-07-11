@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+/* update */
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
