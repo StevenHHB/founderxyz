@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Spinning from '@/components/Spinning';
 
@@ -54,7 +54,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
 
   return (
     <FormProvider {...formMethods}>
-      <Form>
+      <div>
         <form
           onSubmit={formMethods.handleSubmit(onSubmit)}
           className={`mx-3 mb-5 flex flex-col justify-between rounded-[12px] bg-[#2C2D36] px-3 py-5 lg:w-[444px] lg:p-8 ${className}`}
@@ -115,7 +115,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
             </button>
           </div>
         </form>
-      </Form>
+      </div>
     </FormProvider>
   );
 }
