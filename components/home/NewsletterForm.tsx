@@ -53,7 +53,22 @@ export default function NewsletterForm({ className }: { className?: string }) {
   };
 
   return (
-    <FormProvider {...formMethods}>
+    <FormProvider
+      watch={formMethods.watch}
+      getValues={formMethods.getValues}
+      getFieldState={formMethods.getFieldState}
+      setError={formMethods.setError}
+      clearErrors={formMethods.clearErrors}
+      setValue={formMethods.setValue}
+      trigger={formMethods.trigger}
+      control={formMethods.control}
+      formState={formMethods.formState}
+      handleSubmit={formMethods.handleSubmit}
+      reset={formMethods.reset}
+      resetField={formMethods.resetField}
+      unregister={formMethods.unregister}
+      register={formMethods.register}
+    >
       <div>
         <form
           onSubmit={formMethods.handleSubmit(onSubmit)}
@@ -119,6 +134,3 @@ export default function NewsletterForm({ className }: { className?: string }) {
     </FormProvider>
   );
 }
-
-
-// Ensure there is a newline at the end of the file.
