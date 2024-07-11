@@ -56,6 +56,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
 
   return (
     <FormProvider
+      {...formMethods}
       watch={formMethods.watch}
       getValues={formMethods.getValues}
       getFieldState={formMethods.getFieldState}
