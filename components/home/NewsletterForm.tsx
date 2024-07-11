@@ -54,7 +54,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
 
   return (
     <FormProvider
-      watch={formMethods.watch}
+      watch={formMethods.watch<z.infer<typeof FormSchema>>()}
       getValues={formMethods.getValues}
       getFieldState={formMethods.getFieldState}
       setError={formMethods.setError}
@@ -134,3 +134,4 @@ export default function NewsletterForm({ className }: { className?: string }) {
     </FormProvider>
   );
 }
+
