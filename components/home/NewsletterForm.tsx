@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/db/supabase/client';
-import { useForm } from 'react-hook-form';
+import { useForm, FieldValues } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -54,7 +54,7 @@ export default function NewsletterForm({ className }: { className?: string }) {
 
   return (
     <Form
-      control={form.control}
+      control={form.control as unknown as Control<FieldValues>}
       handleSubmit={form.handleSubmit}
       reset={form.reset}
       formState={form.formState}
