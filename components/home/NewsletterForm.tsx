@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { useForm, FormProvider, Controller, useFormContext } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { useTranslations } from 'next-intl';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { FormProvider, useForm } from 'react-hook-form';
+import { z } from 'zod';
+
 import { cn } from '@/lib/utils';
+import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 
 const FormSchema = z.object({
   email: z.string().email(),
@@ -28,7 +29,10 @@ export default function NewsletterForm({ className }: { className?: string }) {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={cn('flex flex-col items-center lg:flex-row lg:space-x-3', className)}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className={cn('flex flex-col items-center lg:flex-row lg:space-x-3', className)}
+      >
         <FormField
           control={form.control}
           name='email'
